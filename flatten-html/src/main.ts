@@ -67,8 +67,15 @@ function mapDOM(element: Node, json: boolean) {
   return treeObject;
 }
 
+enum RowType {
+  None,
+  Text,
+  Image,
+  Video,
+}
+
 class DomObject {
-  public container?: HTMLElement | null;
+  public rowType?: RowType;
   public content?: string | null;
   public children?: DomObject[];
   constructor() {}
@@ -76,20 +83,17 @@ class DomObject {
 
 function traveseNode(root: Node): DomObject {
   let domObject: DomObject = new DomObject();
-  let container!: HTMLElement | null;
 
   if (root.nodeType == Node.TEXT_NODE) {
     let nodeValue = root.nodeValue?.replaceAll(/\s|\n/gm, "");
     if (nodeValue != "") {
-      container = root.parentElement;
+      domObject.rowType = RowType.Text;
       domObject.content = nodeValue;
     }
   } else {
-    if (
-      root instanceof HTMLImageElement ||
-      root instanceof HTMLVideoElement
-    ) {
-      container = root.parentElement;
+    if (root instanceof HTMLImageElement || root instanceof HTMLVideoElement) {
+      domObject.rowType =
+        root instanceof HTMLImageElement ? RowType.Image : RowType.Video;
       domObject.content = root.src;
     } else {
       if (root.childNodes && root.childNodes.length > 0) {
@@ -104,20 +108,49 @@ function traveseNode(root: Node): DomObject {
     }
   }
 
-  if(!domObject.content){
-    delete domObject.content
+  if (!domObject.content) {
+    delete domObject.content;
   }
 
-  if(!domObject.children){
-    delete domObject.children
+  if (!domObject.children) {
+    delete domObject.children;
   }
 
-  domObject.container = container;
+  if (!domObject.rowType) {
+    delete domObject.rowType;
+  }
 
   return domObject;
 }
 
-let target = document.getElementById("app");
-let parser, docNode;
+function flatObject(src: DomObject): DomObject {
+  let ret: DomObject = new DomObject()
+  delete ret.rowType
+  delete ret.content
+  ret.children = []
 
-console.log(traveseNode(target as Node));
+  function flat(root: DomObject, ret: DomObject[]) {
+    if (!root.children) {
+      let obj: DomObject = new DomObject();
+      obj.content = root.content;
+      obj.rowType = root.rowType;
+      delete obj.children;
+      ret.push(obj);
+    }
+
+    if (root.children && root.children.length > 0) {
+      root.children.forEach((child) => {
+        flat(child, ret);
+      });
+    }
+  }
+
+  flat(src, ret.children);
+
+  return ret;
+}
+
+let travesed = traveseNode(initElement as Node);
+
+console.log(travesed);
+console.log(flatObject(travesed));
