@@ -1,5 +1,4 @@
 
-// Test with an element.
 var initElement = document.getElementById("app");
 var json = mapDOM(initElement, true);
 
@@ -27,9 +26,9 @@ function mapDOM(element: Node, json: boolean) {
         object["children"] = [];
         nodeList.forEach((x: Node, i: number) => {
           if (nodeList[i].nodeType == Node.TEXT_NODE) {
-            let nodeValue = nodeList[i].nodeValue?.replaceAll(/\s+|\n/gm, "");   
+            let nodeValue = nodeList[i].nodeValue?.replaceAll(/\s|\n/gm, "");   
             if (nodeValue != "") {
-              console.log(nodeValue)
+              console.log(nodeList[i].parentElement)
               object["content"].push(nodeValue);
             }
           } else {
