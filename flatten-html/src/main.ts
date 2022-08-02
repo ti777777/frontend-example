@@ -124,10 +124,10 @@ function traveseNode(root: Node): DomObject {
 }
 
 function flatObject(src: DomObject): DomObject {
-  let ret: DomObject = new DomObject()
-  delete ret.rowType
-  delete ret.content
-  ret.children = []
+  let ret: DomObject = new DomObject();
+  delete ret.rowType;
+  delete ret.content;
+  ret.children = [];
 
   function flat(root: DomObject, ret: DomObject[]) {
     if (!root.children) {
@@ -150,7 +150,81 @@ function flatObject(src: DomObject): DomObject {
   return ret;
 }
 
+function flatHtml(src: Node): DomObject {
+  let ret: DomObject = new DomObject();
+  delete ret.rowType;
+  delete ret.content;
+  ret.children = [];
+
+  function flat(root: Node, ret: DomObject[]) {
+    console.log(root.nodeType)
+    if (root.nodeType == Node.TEXT_NODE) {
+      let nodeValue = root.nodeValue?.replaceAll(/\s|\n/gm, "");
+      if (nodeValue != "") {
+        let obj: DomObject = new DomObject();
+        obj.content = nodeValue;
+        obj.rowType = RowType.Text;
+        delete obj.children;
+        ret.push(obj);
+      }
+    }
+
+    if (root instanceof HTMLVideoElement) {
+      let obj: DomObject = new DomObject();
+      obj.content = root.src;
+      obj.rowType = RowType.Video;
+      delete obj.children;
+      ret.push(obj);
+    }
+
+    if (root instanceof HTMLImageElement) {
+      let obj: DomObject = new DomObject();
+      obj.content = root.src;
+      obj.rowType = RowType.Image;
+      delete obj.children;
+      ret.push(obj);
+    }
+
+    if (root.childNodes && root.childNodes.length > 0) {
+      root.childNodes.forEach((child) => {
+        flat(child, ret);
+      });
+    }
+  }
+
+  flat(src, ret.children);
+
+  return ret;
+}
+
 let travesed = traveseNode(initElement as Node);
 
-console.log(travesed);
-console.log(flatObject(travesed));
+//console.log(travesed);
+//console.log(flatHtml(initElement as Node));
+
+document.addEventListener("DOMContentLoaded", function () {
+  let ed = document.getElementById("ed");
+  if (ed) {
+    ed.addEventListener("input", function () {});
+  }
+});
+
+window.addEventListener("paste", function (event: ClipboardEvent) {
+  //event.preventDefault();
+
+  let clipboardData = event.clipboardData;
+  if (clipboardData) {
+    let parser = new DOMParser();
+    let doc = parser.parseFromString(
+      clipboardData.getData("text/html"),
+      "text/html"
+    );
+    //console.log(clipboardData.getData("text/html"))
+    flatHtml(doc);
+    // if(clipboardData.files && clipboardData.files.length > 0){
+    //   for(let file in clipboardData.files){
+    //     console.log(file)
+    //   }
+    // }
+  }
+} as EventListener);
