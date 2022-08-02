@@ -22,14 +22,19 @@ function mapDOM(element: Node, json: boolean) {
     var nodeList = element.childNodes as NodeListOf<Node>;
     if (nodeList != null) {
       if (nodeList.length) {
-        object["content"] = [];
+        object["element"] = [];
         object["children"] = [];
         nodeList.forEach((x: Node, i: number) => {
           if (nodeList[i].nodeType == Node.TEXT_NODE) {
             let nodeValue = nodeList[i].nodeValue?.replaceAll(/\s|\n/gm, "");   
             if (nodeValue != "") {
-              console.log(nodeList[i].parentElement)
-              object["content"].push(nodeValue);
+              let element = 
+              {
+                type : nodeList[i].parentElement,
+                content : nodeValue
+              };
+              console.log(element)
+              object["element"].push(element);
             }
           } else {
             object["children"].push({});
@@ -42,8 +47,8 @@ function mapDOM(element: Node, json: boolean) {
         if (object["children"].length == 0) {
           delete object["children"];
         }
-        if (object["content"].length == 0) {
-          delete object["content"];
+        if (object["element"].length == 0) {
+          delete object["element"];
         }
       }
     }
