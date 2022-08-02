@@ -1,15 +1,13 @@
-import "./style.css";
+
 // Test with an element.
 var initElement = document.getElementById("app");
 var json = mapDOM(initElement, true);
-console.log(json);
 
 function mapDOM(element: Node, json: boolean) {
   var treeObject = {};
 
   let parser, docNode;
 
-  // If string convert to document Node
   if (typeof element === "string") {
     if (window.DOMParser) {
       parser = new DOMParser();
@@ -20,7 +18,6 @@ function mapDOM(element: Node, json: boolean) {
     }
   }
 
-  //Recursively loop through DOM elements and assign properties to object
   function treeHTML(element: Element, object: any) {
     object["tag"] = element.nodeName;
     var nodeList = element.childNodes as NodeListOf<Node>;
@@ -30,11 +27,9 @@ function mapDOM(element: Node, json: boolean) {
         object["children"] = [];
         nodeList.forEach((x: Node, i: number) => {
           if (nodeList[i].nodeType == Node.TEXT_NODE) {
-            let nodeValue = nodeList[i].nodeValue;
-            console.log(nodeValue);
-            nodeValue = nodeValue?.replaceAll(/\s+|\n/gm, "") ?? "";
-            console.log(nodeValue);
+            let nodeValue = nodeList[i].nodeValue?.replaceAll(/\s+|\n/gm, "");   
             if (nodeValue != "") {
+              console.log(nodeValue)
               object["content"].push(nodeValue);
             }
           } else {
@@ -66,4 +61,3 @@ function mapDOM(element: Node, json: boolean) {
   return treeObject;
 }
 
-function mapDomToJson(element: Element) {}
