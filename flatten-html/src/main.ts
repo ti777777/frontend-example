@@ -159,7 +159,8 @@ function flatHtml(src: Node): DomObject {
   function flat(root: Node, ret: DomObject[]) {
     console.log(root.nodeType)
     if (root.nodeType == Node.TEXT_NODE) {
-      let nodeValue = root.nodeValue?.replaceAll(/\s|\n/gm, "");
+      let nodeValue = root.nodeValue?.replaceAll(/^\s+$/gm, "");
+      nodeValue = nodeValue?.replaceAll(/^\n+$/gm,"");
       if (nodeValue != "") {
         let obj: DomObject = new DomObject();
         obj.content = nodeValue;
