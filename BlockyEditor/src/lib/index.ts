@@ -15,7 +15,7 @@ enum BlockyType {
 }
 
 class BlockyModel{
-    public blockyType?: BlockyType;
+    public blockyType!: BlockyType;
     public content?: string | null;
 }
 
