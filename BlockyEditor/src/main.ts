@@ -18,10 +18,9 @@ window.addEventListener("paste", function (event: ClipboardEvent) {
       clipboardData.getData("text/html"),
       "text/html"
     );
-    //console.log(clipboardData.getData("text/html"))
     
-    let blocky: Blocky = Blocky.fromHtml(doc)
-
+    let blocky: Blocky = Blocky.fromHTML(document.getElementById("#app"),doc)
+    blocky.render();
     console.log(blocky)
   }
 } as EventListener);
