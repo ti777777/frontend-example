@@ -1,4 +1,4 @@
-import { BlockyModel } from "./model";
+import { BlockyModel } from "../model/model";
 
 export class BlockyTemplate {
   handle!: HTMLElement;
@@ -13,5 +13,7 @@ export class BlockyTemplate {
     this.render();
   }
 
-  render() {}
+  render() {
+
+  }
 }

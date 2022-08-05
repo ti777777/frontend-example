@@ -1,5 +1,5 @@
-import { BlockyModel } from "./model";
-import { BlockyTemplate } from "./view";
+import { BlockyModel } from "./model/model";
+import { BlockyTemplate } from "./components/view";
 
 export class Blocky {
   handle!: HTMLElement;
