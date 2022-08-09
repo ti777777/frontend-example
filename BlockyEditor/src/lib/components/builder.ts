@@ -13,6 +13,7 @@ export class EditorBuilder{
     }
 
     setData(data: any){
+        
     }
 
     registerEvent([...events]:Array<IEvent>){
