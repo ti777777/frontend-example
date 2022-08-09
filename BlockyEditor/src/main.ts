@@ -14,7 +14,7 @@ window.addEventListener("paste", function (event: ClipboardEvent) {
   let clipboardData = event.clipboardData;
   if (clipboardData) {
     let parser = new DOMParser();
-    let doc = parser.parseFromString(
+    parser.parseFromString(
       clipboardData.getData("text/html"),
       "text/html"
     );

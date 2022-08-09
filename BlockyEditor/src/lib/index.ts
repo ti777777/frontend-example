@@ -1,7 +1,5 @@
-import { EditorWrapper } from './components/base/wrapper';
-import { Paragraph } from './components/paragraph';
+import { EditorWrapper } from './ui/base/wrapper';
 import { IModel } from "./interfaces/IModel";
-import { IEditor } from "./interfaces/IEditor";
 import { BlockyModel } from "./model/model";
 
 export class Blocky {
@@ -21,9 +19,6 @@ export class Blocky {
 
   render() {
     this.clearHandleInnerHTML();
-    // this.model.forEach(m=>{
-
-    // })
     for (let i = 0; i < 10; i++) {
       let wrapper:EditorWrapper = new EditorWrapper()
 

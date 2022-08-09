@@ -1,3 +1,4 @@
+
 import { Paragraph } from "./../paragraph";
 import { IEditor } from "./../../interfaces/IEditor";
 import { Dragger } from "./dragger";
@@ -14,10 +15,14 @@ export class EditorWrapper {
     if (editor) {
       components.push(editor.render());
     } else {
-      components.push(new Paragraph().render());
+      let model: any = "Type something ...";
+      let editor = new Paragraph();
+      editor.setup(model);
+      components.push(editor.render());
     }
     this.wrapper = createElement("div", components);
   }
+
 
   getBasicComponents(): Array<HTMLElement> {
     return [Menu(""), Toolbar(), Dragger()];
