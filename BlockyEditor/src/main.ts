@@ -1,11 +1,9 @@
 
 import { Blocky } from './lib'
+import { Menu } from './lib/components/menu';
 
 document.addEventListener("DOMContentLoaded", function () {
-  let ed = document.getElementById("ed");
-  if (ed) {
-    ed.addEventListener("input", function () {});
-  }
+  let app = document.getElementById("app")!;
 });
 
 window.addEventListener("paste", function (event: ClipboardEvent) {

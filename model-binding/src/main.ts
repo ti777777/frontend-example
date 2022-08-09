@@ -1,13 +1,8 @@
-import { setupCounter } from './counter'
+import {helloWorld} from './components/box'
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <div class="card">
-      <div id="menu"></div>
-      <div id="main">
-      </div>
-    </div>
-  </div>
-`
+console.log(typeof helloWorld) // => Just a string of course
+//document.querySelector("#app")!.innerHTML = <box />
 
-setupCounter(document.querySelector<HTMLButtonElement>('#menu')!)
+
+
+

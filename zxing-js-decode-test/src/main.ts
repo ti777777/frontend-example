@@ -1,5 +1,5 @@
 import "./style.css";
-import { BrowserMultiFormatReader } from './zxing';
+import { BrowserMultiFormatReader } from './dist/es2015';
 
 window.addEventListener("load", function () {
   const codeReader = new BrowserMultiFormatReader();

@@ -1,20 +1,24 @@
+import { IModel } from './interfaces/IModel';
+import { IEditor } from './interfaces/IEditor';
 import { BlockyModel } from "./model/model";
-import { BlockyTemplate } from "./components/view";
 
 export class Blocky {
   handle!: HTMLElement;
-  model!: BlockyModel;
-  view!: BlockyTemplate;
+  model!: Array<IModel>;
+  list!: Array<IEditor> ;
   constructor() {}
   static fromHtml(handle: HTMLElement, src: Node): Blocky {
     let ret: Blocky = new Blocky();
-    let model: BlockyModel = BlockyModel.convertHtmlToModel(src);
-    ret.model = model;
-    ret.view = new BlockyTemplate(handle, model);
+    ret.model = BlockyModel.convertHtmlToModel(src);
+    ret.handle = handle;
     return ret;
   }
 
   render() {
-    this.view.render();
+    
+  }
+
+  save() {
+
   }
 }

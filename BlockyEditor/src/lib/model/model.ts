@@ -1,29 +1,29 @@
+import { IModel } from './../interfaces/IModel';
 export enum BlockyType {
-  None,
-  Text,
-  Header1,
-  Header2,
-  Header3,
-  ListItem,
-  NumericListItem,
-  Image,
-  Video,
-  Code,
-  Embed,
-  Map,
-  Table,
+  None = "None",
+  Text = "Text",
+  Header1 = "Header1",
+  Header2 = "Header2",
+  Header3 = "Header3",
+  ListItem = "ListItem",
+  NumericListItem = "NumericListItem",
+  Image = "Image",
+  Video = "Video",
+  Code = "Code",
+  Embed = "Embed",
+  Map = "Map",
+  Table = "Table",
 }
 
-export class BlockyModel {
+export class BlockyModel implements IModel{
   public blockyType!: BlockyType;
-  public content?: string | null;
-  public children?: BlockyModel[];
+  public content!: string | null;
+  public children!: IModel[];
 
   constructor() {}
 
-  static convertHtmlToModel(src: Node): BlockyModel {
-    let ret: BlockyModel = new BlockyModel();
-    ret.children = [];
+  static convertHtmlToModel(src: Node): Array<BlockyModel> {
+    let ret: Array<BlockyModel> = [];
 
     function flat(root: Node, ret: BlockyModel[]) {
       if (root.nodeType == Node.TEXT_NODE) {
@@ -31,7 +31,7 @@ export class BlockyModel {
         nodeValue = nodeValue?.replaceAll(/^\n+$/gm, "");
         if (nodeValue != "") {
           let model = new BlockyModel();
-          model.content = nodeValue;
+          model.content = nodeValue!;
           model.blockyType = BlockyType.Text;
           ret.push(model);
         }
@@ -57,7 +57,7 @@ export class BlockyModel {
         });
       }
     }
-    flat(src, ret.children);
+    flat(src, ret);
 
     return ret;
   }
