@@ -1,4 +1,4 @@
-import { createElement,createTextNode } from "../common/dom";
+import { createElement,createTextNode } from "../../common/dom";
 
 export const Menu = (text:string): HTMLElement => {
   return createElement(

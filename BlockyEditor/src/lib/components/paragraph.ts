@@ -1,22 +1,30 @@
 import { IEvent } from "./../interfaces/IEvent";
-import { createElement } from "./../common/dom";
 import { IEditor } from "./../interfaces/IEditor";
-import { EditorBase } from "./base";
-export class Paragraph extends EditorBase implements IEditor {
+import { createElement } from "../common/dom";
+export class Paragraph implements IEditor {
+  public element!: HTMLElement
+
   constructor() {
-    super();
-    this.intialUI()
-    this.bindEvents()
+    this.element = createElement("div",[],"type something ...")
+    this.element.contentEditable = "true";
+    this.setStyle();
+    this.bindEvents();
   }
 
-  intialUI(){
-    this.UI = createElement("p", [], "paragrapgh");
-  }
+  setStyle(){
+    let style:CSSStyleDeclaration = this.element.style
+
+    style.border = "1px solid #eee"
+  } 
 
   bindEvents() {
     let events: Array<IEvent> = [];
     Array.from(events).forEach((event) => {
-      this.UI.addEventListener(event.name, event.handler);
+      this.element.addEventListener(event.name, event.handler);
     });
+  }
+
+  render(): HTMLElement {
+    return this.element;
   }
 }

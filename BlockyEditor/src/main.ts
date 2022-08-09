@@ -1,9 +1,11 @@
 
 import { Blocky } from './lib'
-import { Menu } from './lib/components/menu';
 
 document.addEventListener("DOMContentLoaded", function () {
   let app = document.getElementById("app")!;
+
+  let blocky: Blocky = Blocky.fromHtml(app,app)
+  blocky.render();
 });
 
 window.addEventListener("paste", function (event: ClipboardEvent) {
@@ -17,8 +19,5 @@ window.addEventListener("paste", function (event: ClipboardEvent) {
       "text/html"
     );
     
-    let blocky: Blocky = Blocky.fromHtml(document.getElementById("#app")!,doc)
-    blocky.render();
-    console.log(blocky)
   }
 } as EventListener);
