@@ -1,7 +1,7 @@
 import { Dragger } from "./dragger";
 import { Toolbar } from "./toolbar";
 import { Menu } from "./menu";
-import { createElement } from "./../common/dom";
+import { createElement } from "../../common/dom";
 
 export class EditorBase {
   UI!:HTMLElement;
