@@ -24,7 +24,11 @@ export class Paragraph implements IEditor {
     });
   }
 
-  render(): HTMLElement {
+  save(): Object {
+    return {}
+  }
+
+  render(model?: Object): HTMLElement {
     return this.element;
   }
 }

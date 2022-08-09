@@ -1,4 +1,5 @@
 export interface IEditor{
-    render():HTMLElement
-    children?: IEditor
+    save():Object
+    render(model?:Object):HTMLElement
+    children?: Array<IEditor>
 }
