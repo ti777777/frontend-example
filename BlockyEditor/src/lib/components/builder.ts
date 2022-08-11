@@ -1,26 +1,18 @@
-import { IEvent } from './../interfaces/IEvent';
-import { BlockyType } from './../model/model';
-import { IEditor } from './../interfaces/IEditor';
-export class EditorBuilder{
-    editor!: IEditor
-    
-    constructor(){
-        
-    }
+import { IEvent } from "./../interfaces/IEvent";
+import { BlockyType } from "./../model/model";
+import { IBlock } from "../interfaces/IBlock";
+export class EditBlockBuilder {
+  editor!: IBlock;
 
-    setType(type: BlockyType){
+  constructor() {}
 
-    }
+  setType(type: BlockyType) {}
 
-    setData(data: any){
-        
-    }
+  setData(data: any) {}
 
-    registerEvent([...events]:Array<IEvent>){
-        
-    }
+  registerEvent([...events]: Array<IEvent>) {}
 
-    build():IEditor{
-        return this.editor
-    }
+  build(): IBlock {
+    return this.editor;
+  }
 }

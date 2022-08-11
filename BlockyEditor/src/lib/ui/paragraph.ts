@@ -1,7 +1,7 @@
 
-import { IEditor } from "./../interfaces/IEditor";
+import { IBlock } from "../interfaces/IBlock";
 import { createElement } from "../common/dom";
-export class Paragraph implements IEditor {
+export class Paragraph implements IBlock {
   private model: any = {};
   public element!: HTMLElement;
 
@@ -13,10 +13,8 @@ export class Paragraph implements IEditor {
 
   setStyle() {
     let style: CSSStyleDeclaration = this.element.style;
-
     style.border = "1px solid #eee";
   }
-
 
   setup(data: any): void {
     this.model = data

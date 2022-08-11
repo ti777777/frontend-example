@@ -1,6 +1,6 @@
-export interface IEditor{
+export interface IBlock{
     setup(data: any):void
     readData():any
     render():HTMLElement
-    children?: Array<IEditor>
+    children?: Array<IBlock>
 }

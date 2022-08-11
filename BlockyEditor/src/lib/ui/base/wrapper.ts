@@ -1,24 +1,24 @@
 
-import { Paragraph } from "./../paragraph";
-import { IEditor } from "./../../interfaces/IEditor";
+import { Paragraph } from "../paragraph";
+import { IBlock } from "../../interfaces/IBlock";
 import { Dragger } from "./dragger";
 import { Toolbar } from "./toolbar";
 import { Menu } from "./menu";
 import { createElement } from "../../common/dom";
 
-export class EditorWrapper {
+export class BlockWrapper {
   wrapper!: HTMLElement;
 
   constructor();
-  constructor(editor?: IEditor) {
+  constructor(block?: IBlock) {
     let components = this.getBasicComponents();
-    if (editor) {
-      components.push(editor.render());
+    if (block) {
+      components.push(block.render());
     } else {
       let model: any = "Type something ...";
-      let editor = new Paragraph();
-      editor.setup(model);
-      components.push(editor.render());
+      let block = new Paragraph();
+      block.setup(model);
+      components.push(block.render());
     }
     this.wrapper = createElement("div", components);
   }

@@ -1,4 +1,4 @@
-import { EditorWrapper } from './ui/base/wrapper';
+import { BlockWrapper } from './ui/base/wrapper';
 import { IModel } from "./interfaces/IModel";
 import { BlockyModel } from "./model/model";
 
@@ -20,7 +20,7 @@ export class Blocky {
   render() {
     this.clearHandleInnerHTML();
     for (let i = 0; i < 10; i++) {
-      let wrapper:EditorWrapper = new EditorWrapper()
+      let wrapper:BlockWrapper = new BlockWrapper()
 
       this.handle.appendChild(wrapper.render())
     }
