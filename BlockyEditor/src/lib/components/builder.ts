@@ -1,7 +1,7 @@
 import { IEvent } from "./../interfaces/IEvent";
 import { BlockyType } from "./../model/model";
 import { IBlock } from "../interfaces/IBlock";
-export class EditBlockBuilder {
+export class BlockBuilder {
   editor!: IBlock;
 
   constructor() {}
