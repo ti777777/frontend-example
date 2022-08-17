@@ -1,6 +1,6 @@
 import { createElement,createTextNode } from "../../common/dom";
 
-export const Menu = (text:string): HTMLElement => {
+export const Menu = (): HTMLElement => {
   return createElement(
     "div",
     [
@@ -9,7 +9,6 @@ export const Menu = (text:string): HTMLElement => {
       createElement("span", [], "option 2"),
       createTextNode(" "),
       createElement("span", [], "option 3"),
-    ],
-    text
+    ]
   );
 };

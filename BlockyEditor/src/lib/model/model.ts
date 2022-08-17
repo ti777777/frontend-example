@@ -1,5 +1,5 @@
-import { IModel } from './../interfaces/IModel';
-export enum BlockyType {
+
+export enum BlockType {
   None = "None",
   Text = "Text",
   Header1 = "Header1",
@@ -15,39 +15,39 @@ export enum BlockyType {
   Table = "Table",
 }
 
-export class BlockyModel implements IModel{
-  public blockyType!: BlockyType;
+export class BlockModel{
+  public blockyType!: BlockType;
   public content!: string | null;
-  public children!: IModel[];
+  public children!: BlockModel[];
 
   constructor() {}
 
-  static convertHtmlToModel(src: Node): Array<BlockyModel> {
-    let ret: Array<BlockyModel> = [];
+  static convertHtmlToModel(src: Node): Array<BlockModel> {
+    let ret: Array<BlockModel> = [];
 
-    function flat(root: Node, ret: BlockyModel[]) {
+    function flat(root: Node, ret: BlockModel[]) {
       if (root.nodeType == Node.TEXT_NODE) {
         let nodeValue = root.nodeValue?.replaceAll(/^\s+$/gm, "");
         nodeValue = nodeValue?.replaceAll(/^\n+$/gm, "");
         if (nodeValue != "") {
-          let model = new BlockyModel();
+          let model = new BlockModel();
           model.content = nodeValue!;
-          model.blockyType = BlockyType.Text;
+          model.blockyType = BlockType.Text;
           ret.push(model);
         }
       }
 
       if (root instanceof HTMLVideoElement) {
-        let model = new BlockyModel();
+        let model = new BlockModel();
         model.content = root.src;
-        model.blockyType = BlockyType.Video;
+        model.blockyType = BlockType.Video;
         ret.push(model);
       }
 
       if (root instanceof HTMLImageElement) {
-        let model = new BlockyModel();
+        let model = new BlockModel();
         model.content = root.src;
-        model.blockyType = BlockyType.Image;
+        model.blockyType = BlockType.Image;
         ret.push(model);
       }
 

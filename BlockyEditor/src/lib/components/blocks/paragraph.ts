@@ -5,9 +5,9 @@ import { BlockBase } from "../base/blockBase";
 export class Paragraph extends BlockBase implements IBlock {
   private model: any = {};
 
-  render(){
-    this.element = createElement("div", [], "type something ...");
-    this.element.contentEditable = "true";
+  draw(){
+    this.contentElement = createElement("div", [], "type something ...");
+    this.contentElement.contentEditable = "true";
   }
 
   read(): any {

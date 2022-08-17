@@ -1,12 +1,13 @@
 import { IBlock } from "../../interfaces/block";
-export class Container implements IBlock{
+import { IContainer } from "../../interfaces/container";
+export class Panel implements IBlock,IContainer{
     private children: Array<IBlock> = []
 
     read() {
         throw new Error("Method not implemented.");
     }
 
-    render(): HTMLElement {
+    draw(): HTMLElement {
         throw new Error("Method not implemented.");
     }
     

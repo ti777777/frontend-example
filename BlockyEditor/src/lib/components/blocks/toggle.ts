@@ -1,14 +1,15 @@
 import { IBlock } from "../../interfaces/block";
+import { IContainer } from "../../interfaces/container";
 import { BlockBase } from "../base/blockBase";
 
-export class Toggle extends BlockBase implements IBlock {
+export class Toggle extends BlockBase implements IBlock,IContainer {
     private children: Array<IBlock> = []
 
     read() {
         throw new Error("Method not implemented.");
     }
 
-    render(): HTMLElement {
+    draw(): HTMLElement {
         throw new Error("Method not implemented.");
     }
     
