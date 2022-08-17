@@ -1,9 +1,10 @@
-import { BlockWrapper } from './ui/base/wrapper';
+import { Container } from './components/blocks/container';
 import { IModel } from "./interfaces/IModel";
 import { BlockyModel } from "./model/model";
 
 export class Blocky {
   handle!: HTMLElement;
+  container!: Container;
   model!: Array<IModel>;
   constructor() {}
   static fromHtml(handle: HTMLElement, src: Node): Blocky {
@@ -18,12 +19,7 @@ export class Blocky {
   }
 
   render() {
-    this.clearHandleInnerHTML();
-    for (let i = 0; i < 10; i++) {
-      let wrapper:BlockWrapper = new BlockWrapper()
-
-      this.handle.appendChild(wrapper.render())
-    }
+    this.container.render();
   }
 
   save() {}
