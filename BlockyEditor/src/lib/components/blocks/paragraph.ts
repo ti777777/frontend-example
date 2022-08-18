@@ -1,7 +1,7 @@
 
 import { IBlock } from "../../interfaces/block";
 import { BlockBase } from "../base/blockBase";
-export class Paragraph extends BlockBase{
+export class Paragraph extends BlockBase implements IBlock {
   private model: any = {};
 
   draw():HTMLElement{
