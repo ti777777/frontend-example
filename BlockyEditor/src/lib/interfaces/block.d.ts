@@ -1,6 +1,8 @@
 import { IDrawable } from "./drawable";
+import { BlockType } from "./type";
 
 export interface IBlock extends IDrawable{
   id: string
-  read(): any;
+  type: BlockType
+  read(): object
 }

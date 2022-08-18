@@ -1,5 +1,5 @@
-import { IBlock } from "../../interfaces/block"
-import { IContainer } from "../../interfaces/container"
+
+import { IContainer,IBlock } from "../interfaces"
 import { BlockBase } from "./blockBase"
 export class CompoundBlockBase extends BlockBase implements IContainer {
   children: Array<IBlock> = []

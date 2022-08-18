@@ -1,17 +1,20 @@
-import { Panel } from './components/blocks/panel';
-import { BlockModel } from "./model/model";
+import { Panel } from "./components/blocks/panel";
+import { BlockConverter } from "./model/converter";
 
 export class Blocky {
   panel!: Panel;
-  model!: BlockModel[];
-  constructor(
-    public handle: HTMLElement
-  ) {
-    this.panel = new Panel(this.handle)
+  constructor(public handle: HTMLElement) {
+    this.panel = new Panel(this.handle);
   }
+
   static fromHtml(handle: HTMLElement, src: Node): Blocky {
     let ret: Blocky = new Blocky(handle);
-    ret.model = BlockModel.convertHtmlToModel(src);
+    let blocks = BlockConverter.fromHtml(src);
+    
+    for(let block of blocks){
+      ret.panel.add(block)
+    }
+
     ret.handle = handle;
     return ret;
   }
@@ -20,5 +23,7 @@ export class Blocky {
     this.panel.render();
   }
 
-  save() {}
+  save() : any{
+    return this.panel.read();
+  }
 }

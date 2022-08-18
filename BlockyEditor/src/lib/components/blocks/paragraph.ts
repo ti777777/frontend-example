@@ -1,7 +1,8 @@
-
-import { BlockBase } from "../base/blockBase"
+import { BlockType } from "../../interfaces/type.d";
+import { BlockBase } from "../blockBase"
 export class Paragraph extends BlockBase {
-  private model: any = {}
+  type = BlockType.Text
+  model: any = {}
 
   draw():HTMLElement{
     this.contentWrapper.contentEditable = "true"

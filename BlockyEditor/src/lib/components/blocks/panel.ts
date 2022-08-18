@@ -1,22 +1,24 @@
 import { Toggle } from "./toggle"
 import { Paragraph } from "./paragraph"
-import { IBlock } from "../../interfaces/block"
-import { IContainer } from "../../interfaces/container"
+import { IBlock, IContainer } from "../../interfaces"
+import { Video } from "./video"
+import { Image } from "./image"
+import { Embed } from "./embed"
 export class Panel implements IContainer {
   private children: Array<IBlock> = []
 
   constructor(public handle: HTMLElement) {
     this.add(new Paragraph())
-    this.add(new Paragraph())
+    this.add(new Embed())
     this.add(new Paragraph())
     let toggle = new Toggle()
+    toggle.add(new Image())
     toggle.add(new Paragraph())
-    toggle.add(new Paragraph())
-    toggle.add(new Paragraph())
+    toggle.add(new Video())
     this.add(toggle)
   }
 
-  read() {
+  read(): any {
     throw new Error("Method not implemented.")
   }
 
