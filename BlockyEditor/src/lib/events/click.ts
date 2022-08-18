@@ -1,6 +1,6 @@
-import { IEvent } from '../interfaces/event';
+import { IEvent } from '../interfaces/event'
 export class ClickEvent implements IEvent{
-    name: string = "click";
+    name: string = "click"
     handler(evt:Event):void{
     }
 }

@@ -1,8 +1,8 @@
-import { CompoundBlockBase } from '../base/compoundBlockBase';
+import { CompoundBlockBase } from '../base/compoundBlockBase'
 
 export class Toggle extends CompoundBlockBase{
     read() {
-        throw new Error("Method not implemented.");
+        throw new Error("Method not implemented.")
     }
 
     draw(): HTMLElement {

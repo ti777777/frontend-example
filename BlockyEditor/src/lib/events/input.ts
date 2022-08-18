@@ -1,6 +1,6 @@
-import { IEvent } from '../interfaces/event';
+import { IEvent } from '../interfaces/event'
 export class InputEvent implements IEvent{
-    name: string = "input";
+    name: string = "input"
     handler(evt:Event){
     }
 }

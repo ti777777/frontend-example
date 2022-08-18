@@ -1,11 +1,11 @@
 
-import { BlockBase } from "../base/blockBase";
+import { BlockBase } from "../base/blockBase"
 export class Paragraph extends BlockBase {
-  private model: any = {};
+  private model: any = {}
 
   draw():HTMLElement{
-    this.contentWrapper.contentEditable = "true";
-    return this.wrapper;
+    this.contentWrapper.contentEditable = "true"
+    return this.wrapper
   }
 
   read(): any {
