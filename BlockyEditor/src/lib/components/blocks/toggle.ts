@@ -1,7 +1,6 @@
-import { CompoundBlockBase } from './../base/compundBlockBase';
-import { IBlock } from "../../interfaces/block";
+import { CompoundBlockBase } from '../base/compoundBlockBase';
 
-export class Toggle extends CompoundBlockBase implements IBlock {
+export class Toggle extends CompoundBlockBase{
     read() {
         throw new Error("Method not implemented.");
     }
