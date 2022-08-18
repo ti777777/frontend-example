@@ -1,17 +1,15 @@
 
 import { IBlock } from "../../interfaces/block";
-import { createElement } from "../../common/dom";
 import { BlockBase } from "../base/blockBase";
-export class Paragraph extends BlockBase implements IBlock {
+export class Paragraph extends BlockBase{
   private model: any = {};
 
-  draw(){
-    this.contentElement = createElement("div", [], "type something ...");
-    this.contentElement.contentEditable = "true";
+  draw():HTMLElement{
+    this.contentWrapper.contentEditable = "true";
+    return this.wrapper;
   }
 
   read(): any {
     return this.model
   }
-
 }

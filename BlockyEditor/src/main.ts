@@ -4,7 +4,7 @@ import { Blocky } from './lib'
 document.addEventListener("DOMContentLoaded", function () {
   let app = document.getElementById("app")!;
 
-  let blocky: Blocky = Blocky.fromHtml(app,app)
+  let blocky: Blocky = new Blocky(app)
   blocky.render();
 });
 

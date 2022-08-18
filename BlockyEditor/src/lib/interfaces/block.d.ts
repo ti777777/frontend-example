@@ -1,7 +1,5 @@
-/**
- * 
- */
-export interface IBlock{
-    read():any
-    draw()
+export interface IBlock {
+  id: string
+  read(): any;
+  draw(): HTMLElement;
 }
