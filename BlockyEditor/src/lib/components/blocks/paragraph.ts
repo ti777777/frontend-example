@@ -1,3 +1,4 @@
+import { createBasicContentEditable } from './../../common/dom';
 import { BlockType } from "../../interfaces/type.d";
 import { BlockBase } from "../blockBase"
 export class Paragraph extends BlockBase {
@@ -5,7 +6,7 @@ export class Paragraph extends BlockBase {
   model: any = {}
 
   draw():HTMLElement{
-    this.contentWrapper.contentEditable = "true"
+    this.contentWrapper.appendChild(createBasicContentEditable())
     return this.wrapper
   }
 

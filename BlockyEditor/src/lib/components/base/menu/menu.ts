@@ -1,6 +1,6 @@
 import { IDrawable } from '../../../interfaces/drawable';
 import { BlockBase } from '../../blockBase'
-import { createElement, createTextNode } from "../../../common/dom"
+import { createElement } from "../../../common/dom"
 
 export class Menu implements IDrawable{
   private wrapper: HTMLElement = createElement("div")

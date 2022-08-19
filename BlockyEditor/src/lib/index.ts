@@ -1,3 +1,4 @@
+import './styles/Reset.css'
 import { Panel } from "./components/blocks/panel";
 import { BlockConverter } from "./model/converter";
 

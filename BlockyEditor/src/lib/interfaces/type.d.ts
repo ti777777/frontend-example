@@ -6,6 +6,7 @@ export enum BlockType {
     Header3 = "Header3",
     ListItem = "ListItem",
     NumericListItem = "NumericListItem",
+    Toggle = "Toggle",
     Image = "Image",
     Video = "Video",
     Code = "Code",
