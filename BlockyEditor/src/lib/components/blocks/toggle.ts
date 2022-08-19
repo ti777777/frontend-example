@@ -1,19 +1,31 @@
-import { createTextNode } from '../../common/dom'
-import { CompoundBlockBase } from '../compoundBlockBase'
 
-export class Toggle extends CompoundBlockBase{
-    read() :object{
-        throw new Error("Method not implemented.")
+import { createElement } from "../../common/dom";
+import { CompoundBlockBase } from "../compoundBlockBase";
+
+export class Toggle extends CompoundBlockBase {
+  read(): object {
+    throw new Error("Method not implemented.");
+  }
+
+  draw(): HTMLElement {
+    let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttributeNS(null, "width", "16px");
+    svg.setAttributeNS(null, "height", "16px");
+    svg.setAttributeNS(null, "viewBox", "0 0 256 512");
+    let path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttributeNS(null, "d", "M118.6 105.4l128 127.1C252.9 239.6 256 247.8 256 255.1s-3.125 16.38-9.375 22.63l-128 127.1c-9.156 9.156-22.91 11.9-34.88 6.943S64 396.9 64 383.1V128c0-12.94 7.781-24.62 19.75-29.58S109.5 96.23 118.6 105.4z")
+
+    svg.appendChild(path)
+
+    this.indentArea.appendChild(svg);
+    const element = createElement("div",[],"123");
+    element.contentEditable = "true"
+    this.contentWrapper.appendChild(element)
+    for (let child of this.children) {
+      let childElement = child.draw();
+      this.contentWrapper.appendChild(childElement);
     }
 
-    draw(): HTMLElement {
-        this.contentWrapper.appendChild(createTextNode(">"))
-      
-        for(let child of this.children){
-            let childElement = child.draw()
-            this.contentWrapper.appendChild(childElement)
-        }
-
-        return this.wrapper
-    }
+    return this.wrapper;
+  }
 }

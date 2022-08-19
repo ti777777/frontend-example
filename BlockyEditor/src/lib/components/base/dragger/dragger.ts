@@ -1,7 +1,7 @@
-import { IDrawable } from './../../interfaces/drawable.d';
+import { IDrawable } from '../../../interfaces/drawable';
 
-import { BlockBase } from "../blockBase";
-import { createElement } from "../../common/dom";
+import { BlockBase } from "../../blockBase";
+import { createElement } from "../../../common/dom";
 
 export class Dragger implements IDrawable {
   private wrapper: HTMLElement = createElement("div");

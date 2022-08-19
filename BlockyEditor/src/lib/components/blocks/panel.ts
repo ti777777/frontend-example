@@ -1,20 +1,14 @@
-import { Toggle } from "./toggle"
-import { Paragraph } from "./paragraph"
+import { Paragraph, Toggle } from "."
 import { IBlock, IContainer } from "../../interfaces"
-import { Video } from "./video"
-import { Image } from "./image"
-import { Embed } from "./embed"
-export class Panel implements IContainer {
+export class Panel implements IContainer<IBlock> {
   private children: Array<IBlock> = []
 
   constructor(public handle: HTMLElement) {
-    this.add(new Paragraph())
-    this.add(new Embed())
-    this.add(new Paragraph())
     let toggle = new Toggle()
-    toggle.add(new Image())
     toggle.add(new Paragraph())
-    toggle.add(new Video())
+    toggle.add(new Paragraph())
+    this.add(new Paragraph())
+    this.add(new Paragraph())
     this.add(toggle)
   }
 

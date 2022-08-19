@@ -1,4 +1,4 @@
-export interface IContainer{
-    add(child: IBlock)
-    remove(child: IBlock)
+export interface IContainer<T>{
+    add(child: T)
+    remove(child: T)
 }

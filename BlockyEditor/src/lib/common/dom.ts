@@ -22,3 +22,11 @@ export const createElement = (
 export const createTextNode =(text: string): Text =>{
     return document.createTextNode(text)
 }
+
+export const parseElementFromString = (text: string):HTMLElement => {
+  const parser = new DOMParser()
+  
+  const doc = parser.parseFromString(text, "text/html");
+
+  return doc.body.firstChild as HTMLElement
+}

@@ -1,6 +1,6 @@
-import { Dragger } from "./base/dragger"
-import { Toolbar } from "./base/toolbar"
-import { Menu } from "./base/menu"
+import { Dragger } from "./base/dragger/dragger"
+import { Toolbar } from "./base/toolbar/toolbar"
+import { Menu } from "./base/menu/menu"
 import { createElement } from "../common/dom"
 import { uuid } from "../common/guid"
 import { IBlock } from "../interfaces"
@@ -30,8 +30,8 @@ export class BlockBase implements IBlock {
       this.wrapper.appendChild(this.contentWrapper)
     }
     let style: CSSStyleDeclaration = this.wrapper.style
-    style.padding = "20px"
-    style.border = "1px solid black"
+    style.display = "flex"
+    this.contentWrapper.style.flex = "1"
   }
 
   read():object {
