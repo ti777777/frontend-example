@@ -7,12 +7,15 @@ export class Toggle extends CompoundBlock {
   }
 
   draw(): HTMLElement {
-    this.contentArea.appendChild(createToggleIconElement())
+    const icon = createToggleIconElement()
+    icon.style.flexShrink = "auto"
+
+    this.indentArea.appendChild(icon)
     this.contentArea.appendChild(createBasicContentEditable())
 
     for (let child of this.children) {
       let childElement = child.draw();
-      this.childrenArea.appendChild(childElement);
+      this.contentArea.appendChild(childElement);
     }
 
     return this.wrapper;
@@ -32,7 +35,7 @@ const createToggleIconElement = (): HTMLElement => {
   );
 
   svg.appendChild(path);
-  const container:HTMLElement = createElement("span")
-  container.appendChild(svg)
-  return container;
+  const icon:HTMLElement = createElement("span")
+  icon.appendChild(svg)
+  return icon;
 };

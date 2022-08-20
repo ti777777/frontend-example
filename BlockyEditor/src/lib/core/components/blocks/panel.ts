@@ -6,10 +6,9 @@ export class Panel {
   constructor(public handle: HTMLElement) {
     let toggle = new Toggle()
     toggle.add(new Paragraph())
-    toggle.add(new Paragraph())
-    this.add(new Paragraph())
     this.add(new Paragraph())
     this.add(toggle)
+    toggle.add(new Toggle())
   }
 
   read(): any {

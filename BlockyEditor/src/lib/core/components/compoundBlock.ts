@@ -4,12 +4,14 @@ import { IContainer,IBlock } from "../interfaces"
 import { Block } from "./block"
 export class CompoundBlock extends Block implements IContainer<IBlock> {
   children: Array<IBlock> = []
-  childrenArea: HTMLElement = createElement("div")
+  chidrenWrapper: HTMLElement = createElement("div")
+  indentArea: HTMLElement = createElement("div")
 
   constructor(){
     super()
-    this.childrenArea.style.padding = "0"
-    this.wrapper.appendChild(this.childrenArea)
+    this.indentArea.style.flexShrink = "0"
+    this.indentArea.style.padding = "3px"
+    this.contentArea.before(this.indentArea)
   }
 
   add(child: IBlock) {

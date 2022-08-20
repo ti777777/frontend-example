@@ -11,15 +11,13 @@ export class Block implements IBlock {
   readonly: boolean = false
 
   constructor() {
-    this.wrapper = createElement("div", [])
-    this.wrapper.className = "block-wrapper"
+    this.wrapper = createElement("div")
     this.wrapper.setAttribute("block-id",this.id)
-    this.appendComponents()
-    let style: CSSStyleDeclaration = this.wrapper.style
-    style.display = "flex"
-    this.contentArea.className = "content-wrapper"
+    this.wrapper.style.display = "flex"
+    this.wrapper.appendChild(this.contentArea)
+    this.contentArea.style.display = "flex"
+    this.contentArea.style.flexDirection = "column"
     this.contentArea.style.flex = "1"
-   
   }
 
   read():object {
@@ -28,10 +26,6 @@ export class Block implements IBlock {
 
   draw(): HTMLElement {
     throw new Error("Method not implemented.")
-  }
-
-  appendComponents(){
-      this.wrapper.appendChild(this.contentArea)
   }
   
   addEvents(){
