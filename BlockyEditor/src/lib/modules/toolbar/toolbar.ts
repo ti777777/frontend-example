@@ -1,6 +1,6 @@
-import { IDrawable } from '../../../interfaces/drawable';
-import { BlockBase } from '../../blockBase';
-import { createElement } from "../../../common/dom"
+import { IDrawable } from '../../core/interfaces/drawable';
+import { BlockBase } from '../../core/components/block';
+import { createElement } from "../../common/dom"
 
 export class Toolbar implements IDrawable{
     private wrapper: HTMLElement = createElement("div")

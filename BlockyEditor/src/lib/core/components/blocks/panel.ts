@@ -1,6 +1,6 @@
 import { Paragraph, Toggle } from "."
-import { IBlock, IContainer } from "../../interfaces"
-export class Panel implements IContainer<IBlock> {
+import { IBlock } from "../../interfaces"
+export class Panel {
   private children: Array<IBlock> = []
 
   constructor(public handle: HTMLElement) {

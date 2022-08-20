@@ -1,20 +1,17 @@
-import { createBasicContentEditable } from './../../common/dom';
-import { createElement } from "../../common/dom";
-import { CompoundBlockBase } from "../compoundBlockBase";
+import { createBasicContentEditable } from '../../../common/dom';
+import { CompoundBlock } from "../compoundBlock";
 
-export class ListItem extends CompoundBlockBase {
+export class ListItem extends CompoundBlock {
   read(): object {
     throw new Error("Method not implemented.");
   }
 
   draw(): HTMLElement {
-    this.indentArea.appendChild(createListItemIconElement());
-
-    this.contentWrapper.appendChild(createBasicContentEditable());
+    this.contentArea.appendChild(createBasicContentEditable())
 
     for (let child of this.children) {
       let childElement = child.draw();
-      this.contentWrapper.appendChild(childElement);
+      this.childrenArea.appendChild(childElement);
     }
 
     return this.wrapper;

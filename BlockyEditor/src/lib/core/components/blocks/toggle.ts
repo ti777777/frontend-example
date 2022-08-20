@@ -1,25 +1,25 @@
-import { createBasicContentEditable } from './../../common/dom';
-import { CompoundBlockBase } from "../compoundBlockBase";
+import { createBasicContentEditable, createElement } from '../../../common/dom';
+import { CompoundBlock } from "../compoundBlock";
 
-export class Toggle extends CompoundBlockBase {
+export class Toggle extends CompoundBlock {
   read(): object {
     throw new Error("Method not implemented.");
   }
 
   draw(): HTMLElement {
-    this.indentArea.appendChild(createToggleIconElement());
-    this.contentWrapper.appendChild(createBasicContentEditable())
+    this.contentArea.appendChild(createToggleIconElement())
+    this.contentArea.appendChild(createBasicContentEditable())
 
     for (let child of this.children) {
       let childElement = child.draw();
-      this.contentWrapper.appendChild(childElement);
+      this.childrenArea.appendChild(childElement);
     }
 
     return this.wrapper;
   }
 }
 
-const createToggleIconElement = (): SVGSVGElement => {
+const createToggleIconElement = (): HTMLElement => {
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   svg.setAttributeNS(null, "width", "16px");
   svg.setAttributeNS(null, "height", "16px");
@@ -32,5 +32,7 @@ const createToggleIconElement = (): SVGSVGElement => {
   );
 
   svg.appendChild(path);
-  return svg;
+  const container:HTMLElement = createElement("span")
+  container.appendChild(svg)
+  return container;
 };

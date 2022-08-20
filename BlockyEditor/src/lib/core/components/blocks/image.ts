@@ -1,15 +1,15 @@
-import { createElement } from "../../common/dom";
-import { BlockType } from "../../interfaces/type.d";
-import { BlockBase } from "../blockBase";
+import { createElement } from "../../../common/dom";
+import { BlockType } from "../../model/type";
+import { Block } from "../block";
 
-export class Image extends BlockBase{
+export class Image extends Block{
   type = BlockType.Image
   model: any = {}
 
   draw():HTMLElement{
     let element: HTMLImageElement = createElement("img") as HTMLImageElement
     element.src= "https://cdn.britannica.com/60/8160-050-08CCEABC/German-shepherd.jpg"
-    this.contentWrapper.appendChild(element)
+    this.contentArea.appendChild(element)
     return this.wrapper
   }
 

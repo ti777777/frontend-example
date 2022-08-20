@@ -27,6 +27,7 @@ export const createBasicContentEditable = (): HTMLElement => {
   const element: HTMLElement = createElement("div", [], "1");
   element.contentEditable = "true";
   element.style.minHeight = "18px";
+  element.style.padding="5px";
   element.style.outline = "none";
   return element;
 };

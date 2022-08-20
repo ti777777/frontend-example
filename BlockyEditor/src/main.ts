@@ -1,8 +1,9 @@
-
+import './lib/core/styles/reset.css'
+import './lib/core/styles/basic.css'
 import { Blocky } from './lib'
 
 document.addEventListener("DOMContentLoaded", function () {
-  let app = document.getElementById("app")!;
+  let app = document.getElementById("editor")!;
 
   let blocky: Blocky = new Blocky(app)
   blocky.render();

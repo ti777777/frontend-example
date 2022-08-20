@@ -1,5 +1,5 @@
 import { IDrawable } from "./drawable";
-import { BlockType } from "./type";
+import { BlockType } from "../model/type";
 
 export interface IBlock extends IDrawable{
   id: string

@@ -1,8 +1,8 @@
-import { createElement } from "../../common/dom";
-import { BlockType } from "../../interfaces/type.d";
-import { BlockBase } from "../blockBase";
+import { createElement } from "../../../common/dom";
+import { BlockType } from "../../model/type";
+import { Block } from "../block";
 
-export class Video extends BlockBase{
+export class Video extends Block{
   type = BlockType.Video
   model: any = {}
 
@@ -16,7 +16,7 @@ export class Video extends BlockBase{
     source.src = "/assets/BigBuckBunny.mp4"
     source.type = "video/mp4"
     element.appendChild(source)
-    this.contentWrapper.appendChild(element)
+    this.contentArea.appendChild(element)
     return this.wrapper
   }
 
