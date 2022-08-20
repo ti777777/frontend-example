@@ -1,10 +1,12 @@
 import { Panel } from "./core/components/blocks/panel";
+import { EditorContext } from "./core/context/editorContext";
 import { BlockConverter } from "./core/model/converter";
 
 export class Blocky {
   panel!: Panel;
   constructor(public handle: HTMLElement) {
     this.panel = new Panel(this.handle);
+    console.log(EditorContext.getInstance())
   }
 
   static fromHtml(handle: HTMLElement, src: Node): Blocky {
@@ -23,7 +25,7 @@ export class Blocky {
     this.panel.render();
   }
 
-  save() : any{
+  save() : object{
     return this.panel.read();
   }
 }

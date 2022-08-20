@@ -1,6 +1,6 @@
 import { Paragraph, Toggle } from "."
-import { IBlock } from "../../interfaces"
-export class Panel {
+import { IBlock, IContainer } from "../../interfaces"
+export class Panel implements IContainer<IBlock>{
   private children: Array<IBlock> = []
 
   constructor(public handle: HTMLElement) {
@@ -8,10 +8,9 @@ export class Panel {
     toggle.add(new Paragraph())
     this.add(new Paragraph())
     this.add(toggle)
-    toggle.add(new Toggle())
   }
 
-  read(): any {
+  read(): object {
     throw new Error("Method not implemented.")
   }
 

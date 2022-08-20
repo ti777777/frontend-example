@@ -11,7 +11,7 @@ export class ListItem extends CompoundBlock {
 
     for (let child of this.children) {
       let childElement = child.draw();
-      this.childrenArea.appendChild(childElement);
+      this.contentArea.appendChild(childElement);
     }
 
     return this.wrapper;
