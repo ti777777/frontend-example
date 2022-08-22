@@ -8,8 +8,8 @@ export class CompoundBlock extends Block implements IContainer<IBlock> {
   chidrenWrapper: HTMLElement = createElement("div")
   indentArea: HTMLElement = createElement("div")
 
-  constructor() {
-    super()
+  constructor(parent: IContainer<IBlock>) {
+    super(parent)
     this.indentArea.style.flexShrink = "0"
     this.indentArea.style.padding = "3px"
     this.contentArea.before(this.indentArea)

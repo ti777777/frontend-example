@@ -4,9 +4,9 @@ export class Panel implements IContainer<IBlock>{
   private children: Array<IBlock> = []
 
   constructor(public handle: HTMLElement) {
-    let toggle = new Toggle()
-    toggle.add(new Paragraph())
-    this.add(new Paragraph())
+    let toggle = new Toggle(this)
+    toggle.add(new Paragraph(toggle))
+    this.add(new Paragraph(this))
     this.add(toggle)
   }
 

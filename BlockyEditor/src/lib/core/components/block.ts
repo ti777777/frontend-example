@@ -1,3 +1,4 @@
+import { IContainer } from './../interfaces';
 import { createElement } from "../../common/dom"
 import { uuid } from "../../common/guid"
 import { EditorContext } from "../context/editorContext"
@@ -8,11 +9,13 @@ export class Block implements IBlock {
   id: string = uuid()
   wrapper!: HTMLElement
   type!: BlockType
+  parent!: IContainer<IBlock>
   contentArea: HTMLElement = createElement("div")
   readonly: boolean = false
 
-  constructor() {
+  constructor(parent: IContainer<IBlock>) {
     EditorContext.getInstance().blockMap.set(this.id,this)
+    this.parent = parent
     this.wrapper = createElement("div")
     this.wrapper.setAttribute("block-id",this.id)
     this.wrapper.style.display = "flex"
