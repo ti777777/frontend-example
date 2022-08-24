@@ -1,7 +1,5 @@
-import { IContainer } from './../interfaces';
 import { createElement } from "../../common/dom"
 import { uuid } from "../../common/guid"
-import { EditorContext } from "../context/editorContext"
 import { IBlock } from "../interfaces"
 import { BlockType } from "../model/type"
 
@@ -13,7 +11,6 @@ export class Block implements IBlock {
   readonly: boolean = false
 
   constructor() {
-    EditorContext.getInstance().blockMap.set(this.id,this)
     this.wrapper = createElement("div")
     this.wrapper.setAttribute("block-id",this.id)
     this.wrapper.style.display = "flex"

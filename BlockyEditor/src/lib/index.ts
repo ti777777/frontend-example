@@ -1,12 +1,10 @@
 import { Context } from "./core/components/blocks/context";
-import { EditorContext } from "./core/context/editorContext";
 import { BlockConverter } from "./core/model/converter";
 
 export class Blocky {
   context!: Context;
   constructor(public handle: HTMLElement) {
     this.context = new Context(this.handle);
-    console.log(EditorContext.getInstance())
   }
 
   static fromHtml(handle: HTMLElement, src: Node): Blocky {
@@ -19,6 +17,18 @@ export class Blocky {
 
     ret.handle = handle;
     return ret;
+  }
+
+  move(){
+    
+  }
+
+  insertAfter(blockId: string){
+
+  }
+
+  remove(blockId: string){
+
   }
 
   render() {

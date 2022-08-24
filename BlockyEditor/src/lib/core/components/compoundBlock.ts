@@ -1,5 +1,4 @@
 import { createElement } from '../../common/dom';
-import { EditorContext } from '../context/editorContext';
 
 import { IContainer,IBlock } from "../interfaces"
 import { Block } from "./block"
@@ -17,12 +16,10 @@ export class CompoundBlock extends Block implements IContainer<IBlock> {
   }
 
   add(child: IBlock) {
-    EditorContext.getInstance().parentBlockMap.set(child.id,this.id)
     this.children.push(child)
   }
 
   remove(child: IBlock) {
     this.children = this.children.filter((x) => x.id != child.id)
-    EditorContext.getInstance().parentBlockMap.delete(child.id)
   }
 }
