@@ -1,3 +1,4 @@
+import { IBlock } from "./core/interfaces/block.d";
 import { Context } from "./core/components/blocks/context";
 import { BlockConverter } from "./core/model/converter";
 
@@ -10,32 +11,26 @@ export class Blocky {
   static fromHtml(handle: HTMLElement, src: Node): Blocky {
     let ret: Blocky = new Blocky(handle);
     let blocks = BlockConverter.fromHtml(src);
-    
-    for(let block of blocks){
-      ret.context.add(block)
+
+    for (let block of blocks) {
+      ret.context.add(block);
     }
 
     ret.handle = handle;
     return ret;
   }
 
-  move(){
-    
-  }
+  move(blockId: string, position: string) {}
 
-  insertAfter(blockId: string){
+  insertAfter(block: IBlock, position: string) {}
 
-  }
-
-  remove(blockId: string){
-
-  }
+  remove(blockId: string) {}
 
   render() {
     this.context.render();
   }
 
-  save() : object{
+  save(): object {
     return this.context.read();
   }
 }
