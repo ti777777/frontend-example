@@ -9,13 +9,11 @@ export class Block implements IBlock {
   id: string = uuid()
   wrapper!: HTMLElement
   type!: BlockType
-  parent!: IContainer<IBlock>
   contentArea: HTMLElement = createElement("div")
   readonly: boolean = false
 
-  constructor(parent: IContainer<IBlock>) {
+  constructor() {
     EditorContext.getInstance().blockMap.set(this.id,this)
-    this.parent = parent
     this.wrapper = createElement("div")
     this.wrapper.setAttribute("block-id",this.id)
     this.wrapper.style.display = "flex"

@@ -15,7 +15,7 @@ export class Toggle extends CompoundBlock {
 
     for (let child of this.children) {
       let childElement = child.draw();
-      this.contentArea.appendChild(childElement);
+      this.chidrenWrapper.appendChild(childElement);
     }
 
     return this.wrapper;

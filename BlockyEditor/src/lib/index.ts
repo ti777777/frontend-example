@@ -1,11 +1,11 @@
-import { Panel } from "./core/components/blocks/panel";
+import { Context } from "./core/components/blocks/context";
 import { EditorContext } from "./core/context/editorContext";
 import { BlockConverter } from "./core/model/converter";
 
 export class Blocky {
-  panel!: Panel;
+  context!: Context;
   constructor(public handle: HTMLElement) {
-    this.panel = new Panel(this.handle);
+    this.context = new Context(this.handle);
     console.log(EditorContext.getInstance())
   }
 
@@ -14,7 +14,7 @@ export class Blocky {
     let blocks = BlockConverter.fromHtml(src);
     
     for(let block of blocks){
-      ret.panel.add(block)
+      ret.context.add(block)
     }
 
     ret.handle = handle;
@@ -22,10 +22,10 @@ export class Blocky {
   }
 
   render() {
-    this.panel.render();
+    this.context.render();
   }
 
   save() : object{
-    return this.panel.read();
+    return this.context.read();
   }
 }

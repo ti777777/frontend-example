@@ -1,8 +1,8 @@
 import { ListItem } from './list-Item';
 import { Toggle } from "./toggle"
 import { Paragraph } from "./paragraph"
-import { Panel } from "./panel"
+import { Context } from "./context"
 import { Video } from "./video"
 import { Image } from "./image"
 import { Embed } from "./embed"
-export { Panel, Paragraph, Toggle, ListItem, Video, Image, Embed }
+export { Context, Paragraph, Toggle, ListItem, Video, Image, Embed }

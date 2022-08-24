@@ -1,12 +1,12 @@
 import { Paragraph, Toggle } from "."
 import { IBlock, IContainer } from "../../interfaces"
-export class Panel implements IContainer<IBlock>{
+export class Context implements IContainer<IBlock>{
   private children: Array<IBlock> = []
 
   constructor(public handle: HTMLElement) {
-    let toggle = new Toggle(this)
-    toggle.add(new Paragraph(toggle))
-    this.add(new Paragraph(this))
+    let toggle = new Toggle()
+    toggle.add(new Paragraph())
+    this.add(new Paragraph())
     this.add(toggle)
   }
 
