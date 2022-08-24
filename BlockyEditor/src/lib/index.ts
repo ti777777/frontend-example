@@ -22,7 +22,7 @@ export class Blocky {
 
   move(blockId: string, position: string) {}
 
-  insertAfter(block: IBlock, position: string) {}
+  insertNew(block: IBlock, position: string) {}
 
   remove(blockId: string) {}
 
