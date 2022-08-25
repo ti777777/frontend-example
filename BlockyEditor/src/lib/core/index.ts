@@ -7,14 +7,18 @@ export class Core {
     constructor(public handle: HTMLElement) {
       this.context = new Context(this.handle);
     }
+
+    addListenerToBlocks(listener: (event: Event,block: IBlock)=>void){
+    }
     
-    static findBlockById(id: string): IBlock{
+    findBlockById(id: string): IBlock{
         throw new Error()
     }
 
-    static findParentById(id: string): IContainer<IBlock>{
+    findParentById(id: string): IContainer<IBlock>{
         throw new Error()
     }
+
     moveToNext(blockId: string, position: string) {}
 
     moveTofirst(blockId: string, parent: string) {}
