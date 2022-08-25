@@ -1,13 +1,13 @@
 import { Image, Paragraph,Video } from "../components/blocks";
-import { IBlock } from "../interfaces";
+import { Block } from "../components/block";
 
 export class BlockConverter{
   constructor() {}
 
-  static fromHtml(src: Node): Array<IBlock> {
-    let ret: Array<IBlock> = [];
+  static fromHtml(src: Node): Array<Block> {
+    let ret: Array<Block> = [];
 
-    function flat(root: Node, ret: IBlock[]) {
+    function flat(root: Node, ret: Block[]) {
       if (root.nodeType == Node.TEXT_NODE) {
         let nodeValue = root.nodeValue?.replaceAll(/^\s+$/gm, "");
         nodeValue = nodeValue?.replaceAll(/^\n+$/gm, "");

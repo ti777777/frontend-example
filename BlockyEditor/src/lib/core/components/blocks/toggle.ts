@@ -11,7 +11,7 @@ export class Toggle extends CompoundBlock {
     icon.style.flexShrink = "auto"
 
     this.indentArea.appendChild(icon)
-    this.contentArea.appendChild(createBasicContentEditable())
+    this.blockArea.appendChild(createBasicContentEditable())
 
     for (let child of this.children) {
       let childElement = child.draw();

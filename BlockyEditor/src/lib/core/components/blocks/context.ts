@@ -1,9 +1,11 @@
 import { Paragraph, Toggle } from "."
-import { IBlock, IContainer } from "../../interfaces"
-export class Context implements IContainer<IBlock>{
-  private children: Array<IBlock> = []
+import { Block } from "../block"
+import { CompoundBlock } from "../compoundBlock"
+export class Context extends CompoundBlock{
+  children: Array<Block> = []
 
   constructor(public handle: HTMLElement) {
+    super()
     let toggle = new Toggle()
     toggle.add(new Paragraph())
     this.add(new Paragraph())
@@ -20,11 +22,11 @@ export class Context implements IContainer<IBlock>{
     }
   }
 
-  add(child: IBlock) {
+  add(child: Block) {
     this.children.push(child)
   }
 
-  remove(child: IBlock) {
+  remove(child: Block) {
     this.children = this.children.filter((x) => x.id != child.id)
   }
 }

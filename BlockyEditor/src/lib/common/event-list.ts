@@ -1,0 +1,18 @@
+export const EventList: Array<string> = [
+  "pointerover",
+  "pointerenter",
+  "pointerdown",
+  "pointermove",
+  "pointerup",
+  "pointercancel",
+  "pointerout",
+  "pointerleave",
+  "click",
+  "drag",
+  "dragstart",
+  "dragend",
+  "dragover",
+  "dragenter",
+  "dragleave",
+  "drop",
+];
