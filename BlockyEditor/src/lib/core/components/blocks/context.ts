@@ -1,4 +1,3 @@
-import { Paragraph, Toggle } from "."
 import { Block } from "../block"
 import { CompoundBlock } from "../compoundBlock"
 export class Context extends CompoundBlock{
@@ -6,10 +5,6 @@ export class Context extends CompoundBlock{
 
   constructor(public handle: HTMLElement) {
     super()
-    let toggle = new Toggle()
-    toggle.add(new Paragraph())
-    this.add(new Paragraph())
-    this.add(toggle)
   }
 
   read(): object {

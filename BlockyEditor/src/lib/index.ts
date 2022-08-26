@@ -1,12 +1,21 @@
 
 import { Core } from "./core";
+import { Paragraph, Toggle } from "./core/components/blocks";
 import { BlockConverter } from "./core/model/converter";
 
 export class Editor {
   core!: Core 
 
-  constructor(handle:HTMLElement){
+  constructor(handle:HTMLElement,option?: any){
     this.core = new Core(handle)
+
+    if(option.toolBar.enabled){
+    }
+    
+    let toggle = new Toggle()
+    toggle.add(new Paragraph())
+    this.core.context.add(new Paragraph())
+    this.core.context.add(toggle)
   }
 
   static fromHtml(handle: HTMLElement, src: Node): Editor {
@@ -22,10 +31,10 @@ export class Editor {
   }
 
   render() {
-    this.core.context.render();
+    this.core.render();
   }
 
   save(): object {
-    return this.core.context.read();
+    return this.core.save();
   }
 }

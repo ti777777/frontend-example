@@ -8,6 +8,14 @@ export class Core {
       this.context = new Context(this.handle);
     }
 
+    render(){
+        this.context.render()
+    }
+
+    save(): object {
+        return this.context.read()
+    }
+
     addListenerToBlocks(eventName: string,listener: (event: Event,block: IBlock)=>void){
         this.context.addListener(eventName,listener)
     }
