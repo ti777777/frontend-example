@@ -1,4 +1,3 @@
-export interface IModule{
-    initialize():void;
-    getInstance():void;
+export interface IModule {
+  initialize(): void;
 }
