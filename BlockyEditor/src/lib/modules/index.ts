@@ -12,6 +12,7 @@ export class Module implements IModule{
     public static getInstance(): Module {
         if (!Module.instance) {
             Module.instance = new Module();
+            Module.instance.initialize();
         }
 
         return Module.instance;
