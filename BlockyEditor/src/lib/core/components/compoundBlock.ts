@@ -22,4 +22,25 @@ export class CompoundBlock extends Block implements IContainer<IBlock> {
   remove(child: IBlock) {
     this.children = this.children.filter((x) => x.id != child.id)
   }
+
+  draw(): HTMLElement {
+    
+
+    for (let child of this.children) {
+      let childElement = child.draw();
+      this.chidrenWrapper.appendChild(childElement);
+    }
+    return this.wrapper
+  }
+
+  addListener(eventName: string, listener: (event: Event, block: IBlock) => void): void {
+    this.blockArea.addEventListener(eventName,(event)=>{
+      event.stopPropagation();
+      listener(event, this);
+    })
+
+    for(let child of this.children){
+      child.addListener(eventName,listener)
+    }
+  }
 }

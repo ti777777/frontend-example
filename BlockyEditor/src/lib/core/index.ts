@@ -8,7 +8,8 @@ export class Core {
       this.context = new Context(this.handle);
     }
 
-    addListenerToBlocks(listener: (event: Event,block: IBlock)=>void){
+    addListenerToBlocks(eventName: string,listener: (event: Event,block: IBlock)=>void){
+        this.context.addListener(eventName,listener)
     }
     
     findBlockById(id: string): IBlock{

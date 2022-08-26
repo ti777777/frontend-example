@@ -12,13 +12,7 @@ export class Toggle extends CompoundBlock {
 
     this.indentArea.appendChild(icon)
     this.blockArea.appendChild(createBasicContentEditable())
-
-    for (let child of this.children) {
-      let childElement = child.draw();
-      this.chidrenWrapper.appendChild(childElement);
-    }
-
-    return this.wrapper;
+    return super.draw();
   }
 }
 

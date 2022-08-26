@@ -1,4 +1,3 @@
-import { EventList } from "./../../common/event-list";
 import { createElement } from "../../common/dom";
 import { uuid } from "../../common/guid";
 import { IBlock } from "../interfaces";
@@ -23,15 +22,6 @@ export class Block implements IBlock {
     this.contentArea.appendChild(this.blockArea);
   }
 
-  addEventListener(listener: (event: Event, block: Block) => void): void {
-    for (let eventName of EventList) {
-      this.blockArea.addEventListener(eventName, (event) => {
-        event.stopPropagation();
-        listener(event, this);
-      });
-    }
-  }
-
   read(): object {
     throw new Error("Method not implemented.");
   }
@@ -40,8 +30,11 @@ export class Block implements IBlock {
     throw new Error("Method not implemented.");
   }
 
-  addEvents() {
-    this.wrapper;
+  addListener(eventName: string,listener: (event: Event, block: IBlock) => void): void {
+    this.blockArea.addEventListener(eventName,(event)=>{
+      event.stopPropagation();
+      listener(event, this);
+    })
   }
 
   addStyle() {}
