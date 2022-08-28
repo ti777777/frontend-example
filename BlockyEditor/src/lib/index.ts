@@ -12,7 +12,9 @@ export class Editor {
         { type: "paragraph", model: { content: "123" } },
       ]);
     }
-    this.initializeComponents(option);
+    if(!option.readonly){
+      this.initializeComponents(option);
+    }
   }
 
   private async initializeComponents(option: any) {

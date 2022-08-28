@@ -14,9 +14,6 @@ export class Component {
   }
 
   static Bootstrap(core: Core, option: any){
-    if(option && option.readonly){
-        return
-    }
     // new Toolbar(core),
     // new CreateButton(core),
     // new Menu(core),
