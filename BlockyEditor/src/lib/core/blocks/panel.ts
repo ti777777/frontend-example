@@ -13,7 +13,6 @@ export class Panel extends CompoundBlock{
 
   render() {
     for (let block of this.children) {
-      console.log(block)
       this.handle.appendChild(block.draw())
     }
   }

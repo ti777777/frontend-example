@@ -10,6 +10,7 @@ export class Core {
       for(let block of blocks){
         let builder:BlockBuilder = new BlockBuilder();
         builder.setType(block.type)
+        builder.setModel(block.model)
         this.insertNewBlock(builder.build())
       }
     }
