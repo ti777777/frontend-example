@@ -32,7 +32,7 @@ export class Block implements IBlock {
     throw new Error("Method not implemented.");
   }
 
-  addListener(eventName: string,listener: (event: Event, block: IBlock) => void): void {
+  addListener(eventName: string,listener: (event: Event, block: Block) => void): void {
     this.blockArea.addEventListener(eventName,(event)=>{
       event.stopPropagation();
       listener(event, this);
