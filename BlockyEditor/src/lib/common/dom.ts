@@ -23,8 +23,8 @@ export const createTextNode = (text: string): Text => {
   return document.createTextNode(text);
 };
 
-export const createBasicContentEditable = (): HTMLElement => {
-  const element: HTMLElement = createElement("div", [], "1");
+export const createBasicContentEditable = (content?: string): HTMLElement => {
+  const element: HTMLElement = createElement("div", [], content);
   element.contentEditable = "true";
   element.style.minHeight = "18px";
   element.style.padding="5px";

@@ -1,5 +1,5 @@
-import { createBasicContentEditable, createElement } from '../../../common/dom';
-import { CompoundBlock } from "../compoundBlock";
+import { createBasicContentEditable, createElement } from '../../common/dom';
+import { CompoundBlock } from "../blocks/compoundBlock";
 
 export class Toggle extends CompoundBlock {
   read(): object {

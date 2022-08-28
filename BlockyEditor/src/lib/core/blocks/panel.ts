@@ -1,6 +1,6 @@
-import { Block } from "../block"
-import { CompoundBlock } from "../compoundBlock"
-export class Context extends CompoundBlock{
+import { Block } from "./block"
+import { CompoundBlock } from "./compoundBlock"
+export class Panel extends CompoundBlock{
   children: Array<Block> = []
 
   constructor(public handle: HTMLElement) {
@@ -13,6 +13,7 @@ export class Context extends CompoundBlock{
 
   render() {
     for (let block of this.children) {
+      console.log(block)
       this.handle.appendChild(block.draw())
     }
   }

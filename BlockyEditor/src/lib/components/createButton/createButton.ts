@@ -1,13 +1,8 @@
-import { IDrawable } from '../../core/interfaces/drawable';
-import { BlockBase } from '../../core/components/block'
+import { Component } from ".."
 import { createElement } from "../../common/dom"
 
-export class CreateButton implements IDrawable{
+export class CreateButton extends Component{
   private wrapper: HTMLElement = createElement("div")
-
-  constructor(
-    public block: BlockBase
-  ){}
 
   draw(): HTMLElement {
     const element = createIconElement()

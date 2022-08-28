@@ -1,6 +1,6 @@
-import { createElement } from "../../../common/dom";
-import { BlockType } from "../../model/type";
-import { Block } from "../block";
+import { createElement } from "../../common/dom";
+import { BlockType } from "../model/type";
+import { Block } from "../blocks/block";
 
 export class Image extends Block{
   type = BlockType.Image

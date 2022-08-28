@@ -1,5 +1,5 @@
-import { Image, Paragraph,Video } from "../components/blocks";
-import { Block } from "../components/block";
+import { Image, Paragraph,Video } from "../blocks";
+import { Block } from "../blocks/block";
 
 export class BlockConverter{
   constructor() {}

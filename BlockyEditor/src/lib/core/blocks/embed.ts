@@ -1,6 +1,6 @@
-import { createElement } from "../../../common/dom";
-import { BlockType } from "../../model/type";
-import { Block } from "../block";
+import { createElement } from "../../common/dom";
+import { BlockType } from "../model/type";
+import { Block } from "./block";
 
 export class Embed extends Block{
   type = BlockType.Embed

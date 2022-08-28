@@ -1,33 +1,22 @@
-
 import { Core } from "./core";
-import { Paragraph, Toggle } from "./core/components/blocks";
-import { BlockConverter } from "./core/model/converter";
+import { Component } from "./components";
 
 export class Editor {
-  core!: Core 
+  private core!: Core;
 
-  constructor(handle:HTMLElement,option?: any){
-    this.core = new Core(handle)
-
-    if(option.toolBar.enabled){
+  constructor(handle: HTMLElement, option?: any) {
+    if (option && option.blocks) {
+      this.core = new Core(handle, option.blocks);
+    } else {
+      this.core = new Core(handle, [
+        { type: "paragraph", model: { content: "123" } },
+      ]);
     }
-    
-    let toggle = new Toggle()
-    toggle.add(new Paragraph())
-    this.core.context.add(new Paragraph())
-    this.core.context.add(toggle)
+    this.initializeComponents(option);
   }
 
-  static fromHtml(handle: HTMLElement, src: Node): Editor {
-    let ret: Editor = new Editor(handle);
-    let blocks = BlockConverter.fromHtml(src);
-
-    for (let block of blocks) {
-      ret.core.context.add(block);
-    }
-
-    ret.core.handle = handle;
-    return ret;
+  private async initializeComponents(option: any) {
+    Component.Bootstrap(this.core, option);
   }
 
   render() {

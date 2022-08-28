@@ -1,5 +1,5 @@
-import { createBasicContentEditable } from '../../../common/dom';
-import { CompoundBlock } from "../compoundBlock";
+import { createBasicContentEditable } from '../../common/dom';
+import { CompoundBlock } from "./compoundBlock";
 
 export class ListItem extends CompoundBlock {
   read(): object {
@@ -7,11 +7,12 @@ export class ListItem extends CompoundBlock {
   }
 
   draw(): HTMLElement {
-    this.contentArea.appendChild(createBasicContentEditable())
+    this.indentArea.appendChild(createListItemIconElement())
+    this.blockArea.appendChild(createBasicContentEditable())
 
     for (let child of this.children) {
       let childElement = child.draw();
-      this.contentArea.appendChild(childElement);
+      this.chidrenWrapper.appendChild(childElement);
     }
 
     return this.wrapper;

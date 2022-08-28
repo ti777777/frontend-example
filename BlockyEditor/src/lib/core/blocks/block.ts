@@ -7,11 +7,13 @@ export class Block implements IBlock {
   id: string = uuid();
   wrapper!: HTMLElement;
   type!: BlockType;
+  model?: any;
   contentArea: HTMLElement = createElement("div");
   blockArea: HTMLElement = createElement("div");
   readonly: boolean = false;
 
-  constructor() {
+  constructor(model?: any) {
+    this.model = model;
     this.wrapper = createElement("div");
     this.wrapper.setAttribute("block-id", this.id);
     this.wrapper.style.display = "flex";

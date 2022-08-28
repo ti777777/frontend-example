@@ -1,23 +1,29 @@
 import { IContainer } from './interfaces/container.d';
 import { IBlock } from './interfaces/block.d';
-import { Context } from "./components/blocks/context";
+import { Panel } from "./blocks/panel"
+import { BlockBuilder } from './model/builder';
 export class Core {
-    context!: Context;
+    panel!: Panel;
 
-    constructor(public handle: HTMLElement) {
-      this.context = new Context(this.handle);
+    constructor(public handle: HTMLElement,public blocks: any) {
+      this.panel = new Panel(this.handle);
+      for(let block of blocks){
+        let builder:BlockBuilder = new BlockBuilder();
+        builder.setType(block.type)
+        this.insertNewBlock(builder.build())
+      }
     }
 
     render(){
-        this.context.render()
+        this.panel.render()
     }
 
     save(): object {
-        return this.context.read()
+        return this.panel.read()
     }
 
     addListenerToBlocks(eventName: string,listener: (event: Event,block: IBlock)=>void){
-        this.context.addListener(eventName,listener)
+        this.panel.addListener(eventName,listener)
     }
     
     findBlockById(id: string): IBlock{
@@ -28,13 +34,13 @@ export class Core {
         throw new Error()
     }
 
-    moveToNext(blockId: string, position: string) {}
-
     moveTofirst(blockId: string, parent: string) {}
 
-    insertAfter(block: IBlock, position: string) {}
-
     insertfirstChild(block: IBlock, parent: string) {}
+
+    insertNewBlock(block: IBlock){
+        this.panel.children.push(block)
+    }
 
     remove(blockId: string) {}
 }

@@ -11,6 +11,8 @@ export class CompoundBlock extends Block implements IContainer<IBlock> {
     super()
     this.indentArea.style.flexShrink = "0"
     this.indentArea.style.padding = "3px"
+    this.indentArea.style.background = "#eee"
+
     this.contentArea.before(this.indentArea)
     this.contentArea.appendChild(this.chidrenWrapper)
   }

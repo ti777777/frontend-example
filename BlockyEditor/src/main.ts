@@ -5,8 +5,9 @@ import './lib/core/styles/basic.css'
 document.addEventListener("DOMContentLoaded", function () {
   let app = document.getElementById("editor")!;
 
-  let blocky: Editor = new Editor(app)
-  blocky.render();
+  let editor: Editor = new Editor(app)
+  
+  editor.render();
 });
 
 window.addEventListener("paste", function (event: ClipboardEvent) {
